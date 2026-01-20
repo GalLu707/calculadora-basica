@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package calculadora;
+import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,13 +12,36 @@ package calculadora;
  */
 public class Interfaz extends javax.swing.JFrame {
 
-    public float numero1;
-    public float numero2;
+    public float numero1=0;
+    public float numero2=0;
     public String operador;
     public Interfaz() {
         
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    public void validar(){
+         try{
+        switch(operador){
+           case "+":
+               this.problema.setText(Float.toString(numero1+numero2));
+               break;
+           case "-":
+               this.problema.setText(Float.toString(numero1-numero2));
+               break;
+           case "*":
+               this.problema.setText(Float.toString(numero1*numero2));
+               break;
+           case "/":
+               this.problema.setText(Float.toString(numero1/numero2));
+               break;
+               
+       }   
+       }catch(NumberFormatException e){
+           JOptionPane.showMessageDialog(this, "no valido, ingrese un numero");
+          
+       }
+       
     }
 
     /**
@@ -47,7 +72,7 @@ public class Interfaz extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
+        punto = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -219,9 +244,14 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jButton18.setBackground(new java.awt.Color(255, 255, 255));
-        jButton18.setForeground(new java.awt.Color(0, 0, 0));
-        jButton18.setText(".");
+        punto.setBackground(new java.awt.Color(255, 255, 255));
+        punto.setForeground(new java.awt.Color(0, 0, 0));
+        punto.setText(".");
+        punto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                puntoActionPerformed(evt);
+            }
+        });
 
         jButton21.setBackground(new java.awt.Color(255, 255, 255));
         jButton21.setForeground(new java.awt.Color(0, 0, 0));
@@ -269,7 +299,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(punto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(12, 12, 12))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,7 +344,7 @@ public class Interfaz extends javax.swing.JFrame {
                             .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(punto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -379,29 +409,21 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       this.numero1=Float.parseFloat(this.problema.getText());
+      
+        this.numero1=Float.parseFloat(this.problema.getText());
        this.operador="+";
        this.problema.setText("");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-       this.numero2=Float.parseFloat(this.problema.getText());
-       
-       switch(operador){
-           case "+":
-               this.problema.setText(Float.toString(numero1+numero2));
-               break;
-           case "-":
-               this.problema.setText(Float.toString(numero1-numero2));
-               break;
-           case "*":
-               this.problema.setText(Float.toString(numero1*numero2));
-               break;
-           case "/":
-               this.problema.setText(Float.toString(numero1/numero2));
-               break;
-               
+       if(numero1==0&& numero2==0){
+           resultado.setText("0");
+       }else{
+          this.numero2=Float.parseFloat(this.problema.getText()); 
        }
+        
+      
+       
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -422,6 +444,17 @@ public class Interfaz extends javax.swing.JFrame {
        this.problema.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puntoActionPerformed
+        if (punto.isSelected() || numero1 == 0) {
+            this.problema.setText(this.problema.getText() + "0.");
+        } else if (punto.isSelected() || numero2 == 0) {
+            this.problema.setText(this.problema.getText() + "0.");
+        } else {
+            this.problema.setText(this.problema.getText() + ".");
+        }
+
+    }//GEN-LAST:event_puntoActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -432,7 +465,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
@@ -445,6 +477,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel problema;
+    private javax.swing.JButton punto;
     private javax.swing.JLabel resultado;
     // End of variables declaration//GEN-END:variables
 }
