@@ -15,6 +15,7 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -51,7 +52,7 @@ public class Interfaz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("calculadora");
         setAlwaysOnTop(true);
-        setPreferredSize(new java.awt.Dimension(300, 500));
+        setPreferredSize(new java.awt.Dimension(320, 520));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 255));
@@ -61,7 +62,6 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         problema.setForeground(new java.awt.Color(0, 0, 0));
-        problema.setText("0");
 
         resultado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
@@ -69,9 +69,9 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(problema, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .addComponent(problema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -170,6 +170,11 @@ public class Interfaz extends javax.swing.JFrame {
         jButton21.setBackground(new java.awt.Color(255, 255, 255));
         jButton21.setForeground(new java.awt.Color(0, 0, 0));
         jButton21.setText("0");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -289,40 +294,11 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton17ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+       this.problema.setText(this.problema.getText() +"0");
+    }//GEN-LAST:event_jButton21ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Interfaz().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
